@@ -1,0 +1,35 @@
+"Pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+runtime! plugin/sensible.vim
+
+"Set coloring
+syntax on
+colorscheme desert
+
+"Set line numbers
+set number
+
+"Indentation
+"set autoindent
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+"set backspace=indent,eol,start 
+
+"Searching
+set ignorecase
+set hlsearch
+set incsearch
+
+"Display
+"set laststatus=2
+set statusline='%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]'
+
+"Auto reload vimrc
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+"Spellcheck
+set spelllang=en
