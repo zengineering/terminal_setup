@@ -4,7 +4,14 @@ execute pathogen#infect()
 
 runtime! plugin/sensible.vim
 
-"Set coloring
+"Terminal Coloring
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    "     " render properly when inside 256-color tmux and GNU screen.
+    set t_ut=
+endif
+
+"Syntax coloring
 syntax on
 "colorscheme desert
 colorscheme brogrammer
