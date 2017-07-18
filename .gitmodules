@@ -1,0 +1,9 @@
+[submodule "vim"]
+	path = vim
+	url = https://github.com/vim/vim.git
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/tmux/tmux
+[submodule "libevent"]
+	path = libevent
+	url = https://github.com/libevent/libevent.git
