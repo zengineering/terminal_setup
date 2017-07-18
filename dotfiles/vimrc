@@ -6,7 +6,8 @@ runtime! plugin/sensible.vim
 
 "Set coloring
 syntax on
-colorscheme desert
+"colorscheme desert
+colorscheme brogrammer
 
 "Set line numbers
 set number
