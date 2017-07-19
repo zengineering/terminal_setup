@@ -32,17 +32,17 @@
 	path = bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
 [submodule "tmux-plugins/tpm"]
-	path = plugins/tpm
+	path = tmux-plugins/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "tmux-plugins/tmux-resurrect"]
-	path = plugins/tmux-resurrect
+	path = tmux-plugins/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
 [submodule "tmux-plugins/tmux-sidebar"]
-	path = plugins/tmux-sidebar
+	path = tmux-plugins/plugins/tmux-sidebar
 	url = https://github.com/tmux-plugins/tmux-sidebar.git
 [submodule "tmux-plugins/tmux-cpu"]
-	path = plugins/tmux-cpu
+	path = tmux-plugins/plugins/tmux-cpu
 	url = https://github.com/tmux-plugins/tmux-cpu.git
 [submodule "tmux-plugins/tmux-onedark-theme"]
-	path = plugins/tmux-onedark-theme
+	path = tmux-plugins/plugins/tmux-onedark-theme
 	url = https://github.com/odedlaz/tmux-onedark-theme.git
