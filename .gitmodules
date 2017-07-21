@@ -46,3 +46,6 @@
 [submodule "tmux-plugins/tmux-onedark-theme"]
 	path = tmux-plugins/plugins/tmux-onedark-theme
 	url = https://github.com/odedlaz/tmux-onedark-theme.git
+[submodule "bundle/neocomplete.vim"]
+	path = bundle/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim.git
