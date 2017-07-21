@@ -14,7 +14,8 @@ endif
 "Syntax coloring
 syntax on
 "colorscheme desert
-colorscheme brogrammer
+"colorscheme brogrammer
+colorscheme onedark
 
 "Set line numbers
 set number
@@ -40,7 +41,7 @@ augroup myvimrc
 augroup END
 
 "Spellcheck
-set spelllang=en
+"set spelllang=en
 
 "Timeouts - account for annoying delays in nested tmux
 set timeoutlen=1000
