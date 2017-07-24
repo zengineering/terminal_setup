@@ -1,11 +1,3 @@
-if [ $PWD != terminal_setup ]; then
-    echo "Run from terminal_setup dir."
-    exit 1
-fi
-
-TSDIR=$PWD
-PREFIX=$HOME/.local
-
 #
 # build/install libevent
 #
@@ -45,10 +37,15 @@ function install_tmux() {
     make install
 }
 
-function install_vim() {
-    cd $TSDIR/vim
-    ./configure --prefix=$PREFIX --enable-gui=no CPPFLAGS="-I$PREFIX/include" LDFLAGS="-L$PREFIX/lib"
-    make -j8
-    make install
-}
+
+if [ $(basename $PWD) != terminal_setup ]; then
+    echo "Run from terminal_setup dir."
+    exit 1
+fi
+
+TSDIR=$PWD
+PREFIX=$HOME/.local
+install_libevent
+install_ncurses
+install_tmux
 
