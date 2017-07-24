@@ -13,9 +13,15 @@ endif
 
 "Syntax coloring
 syntax on
+"colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
+"colorscheme onedark
 "colorscheme brogrammer
-colorscheme onedark
+"colorscheme jellybeans
+"colorscheme apprentice
+"colorscheme wombat256mod
+"colorscheme seoul256
+colorscheme obsidian
 
 "Set line numbers
 set number
