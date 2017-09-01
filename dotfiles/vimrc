@@ -13,7 +13,7 @@ endif
 
 "Syntax coloring
 syntax on
-"colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
 "colorscheme onedark
 "colorscheme brogrammer
@@ -21,7 +21,7 @@ syntax on
 "colorscheme apprentice
 "colorscheme wombat256mod
 "colorscheme seoul256
-colorscheme obsidian
+"colorscheme obsidian
 
 "Set line numbers
 set number
@@ -58,6 +58,9 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
+
+"Syntastic
+let g:syntastic_quiet_messages = { "type": "style" }
 
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "neocomplete
@@ -133,3 +136,6 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
     " https://github.com/c9s/perlomni.vim
     let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "------------------------------------------------------------------------neocomplete
+
+" disable preview window for completion
+set completeopt-=preview
