@@ -59,6 +59,12 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
+"Grep-ing
+nnoremap gr :grep <cword> *<CR>
+"nnoremap Gr :grep <cword> %:p:h/*<CR>
+nnoremap gR :grep '\b<cword>\b' *<CR>
+"nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
+
 "Syntastic
 let g:syntastic_quiet_messages = { "type": "style" }
 
