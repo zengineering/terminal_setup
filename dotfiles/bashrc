@@ -146,6 +146,13 @@ fi)'
 # less
 export LESSOPEN="|lesspipe.sh %s"
 
+# pdf viewing
+command -v pdftotext >/dev/null 2&>1 || {
+    pdf() {
+        pdftotext -layout -nopgbrk $1 - | less
+    }
+}
+
 #
 # virtualenv
 #
