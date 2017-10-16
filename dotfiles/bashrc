@@ -147,7 +147,7 @@ fi)'
 export LESSOPEN="|lesspipe.sh %s"
 
 # pdf viewing
-command -v pdftotext >/dev/null 2>&1 || {
+command -v pdftotext >/dev/null 2>&1 && {
     termpdf() {
         pdftotext -layout -nopgbrk $1 - | less
     }
