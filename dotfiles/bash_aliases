@@ -6,8 +6,10 @@ alias lsd='ls -l | grep "^d"'
 alias lless='ls -Al | less'
 
 # bash editing/refreshing/viewing
-alias sb='source ~/.bash_profile'
-alias eb='vim ~/.bash_profile'
+alias sb='source ~/.bashrc'
+alias eb='vim ~/.bashrc'
+alias sbp='source ~/.bash_profile'
+alias ebp='vim ~/.bash_profile'
 alias ev='vim ~/.vimrc'
 
 # other stuff
