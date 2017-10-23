@@ -1,0 +1,40 @@
+# bash editing/refreshing/viewing
+alias sb='source ~/.bashrc'
+alias eb='vim ~/.bashrc'
+alias sbp='source ~/.bash_profile'
+alias ebp='vim ~/.bash_profile'
+alias ev='vim ~/.vimrc'
+
+# other stuff
+alias mk='make -j8'
+alias executable='chmod 755' 
+alias cl='clear'
+alias cpr="cp -r"
+alias vimp='vim -p'
+
+# typos
+alias cim='vim'
+alias clera='clear'
+
+# vagrant
+alias vagrantgo='vagrant up && vagrant ssh'
+
+# tcl
+command -v tclsh /dev/null && {
+    alias tclsh='rlwrap tclsh'
+}
+
+# pdf viewing
+command -v pdftotext >/dev/null 2>&1 && {
+    termpdf() {
+        pdftotext -layout -nopgbrk $1 - | less
+    }
+}
+
+# show/hide hidden files in OSX
+case $OSTYPE in darwin*)
+    alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+    alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+    alias brewuu='brew update && brew upgrade'
+;; 
+esac

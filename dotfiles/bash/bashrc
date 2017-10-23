@@ -93,6 +93,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# profile
+if [ -f $HOME/.profile ]; then
+    source $HOME/.profile
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -145,13 +150,6 @@ fi)'
 
 # less
 export LESSOPEN="|lesspipe.sh %s"
-
-# pdf viewing
-command -v pdftotext >/dev/null 2>&1 && {
-    termpdf() {
-        pdftotext -layout -nopgbrk $1 - | less
-    }
-}
 
 #
 # virtualenv
