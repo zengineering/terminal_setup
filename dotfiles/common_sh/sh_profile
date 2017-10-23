@@ -65,3 +65,13 @@ if [ -d $HOME/.local ]; then
         export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
     fi
 fi
+
+
+# machine-specific profiles
+if [ -f $HOME/.gtri_mbp_profile ]; then
+    source $HOME/.gtri_mbp_profile
+fi
+
+if [ -f $HOME/.gtri_server_profile ]; then
+    source $HOME/.gtri_server_profile
+fi
