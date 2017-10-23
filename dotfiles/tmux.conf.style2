@@ -1,5 +1,5 @@
-set -g prefix C-q
-bind-key C-q send-prefix
+set -g prefix C-a
+bind-key C-a send-prefix
 
 # status bar 
 setw -g status-bg colour8
