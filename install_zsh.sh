@@ -23,4 +23,4 @@ fi
 
 PREFIX=$HOME/.local
 install_zsh
-
+ln -s $PWD/prezto $HOME/.prezto
