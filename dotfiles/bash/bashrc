@@ -183,16 +183,3 @@ if [ -d /opt/modern ]; then
     export C_INCLUDE_PATH="/opt/modern/include:$C_INCLUDE_PATH"
     export CPLUS_INCLUDE_PATH="/opt/modern/include:$CPLUS_INCLUDE_PATH"
 fi
-
-#
-# local tools
-#
-if [ -d $HOME/.local ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$PATH"
-    export MANPATH="$HOME/.local/share/man:$MANPATH"
-    export INFOPATH="$HOME/.local/share/info:$INFOPATH"
-    export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
-    export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
-fi
-
