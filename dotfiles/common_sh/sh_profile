@@ -1,8 +1,16 @@
 # bash editing/refreshing/viewing
 alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
+
 alias sbp='source ~/.bash_profile'
 alias ebp='vim ~/.bash_profile'
+
+alias sz='source ~/.zshrc'
+alias ez='vim ~/.zshrc'
+
+alias sp='vim ~/.sh_profile'
+alias ep='vim ~/.sh_profile'
+
 alias ev='vim ~/.vimrc'
 
 # other stuff
@@ -51,4 +59,9 @@ if [ -d $HOME/.local ]; then
     export INFOPATH="$HOME/.local/share/info:$INFOPATH"
     export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
     export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
+
+    if [ -d $HOME/.local/lua_install ]; then
+        export PATH="$HOME/.local/lua_install/bin:$PATH"
+        export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
+    fi
 fi
