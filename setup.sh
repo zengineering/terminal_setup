@@ -21,4 +21,5 @@ link_dotfiles vim
 link_dotfiles tmux
 link_dotfiles bash
 link_dotfiles zsh
+link_dotfiles common_sh
 
