@@ -60,7 +60,7 @@
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "zsh"]
 	path = zsh
-	url = git@github.com:njineer/zsh.git
+	url = https://github.com/njineer/zsh.git
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/sorin-ionescu/prezto
