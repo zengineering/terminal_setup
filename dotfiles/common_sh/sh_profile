@@ -1,3 +1,5 @@
+echo "sh_profile"
+
 # bash editing/refreshing/viewing
 alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
@@ -49,6 +51,17 @@ esac
 
 export TERM=xterm-256color
 
+#================================
+# machine-specific profiles
+if [ -f $HOME/.gtri_mbp_profile ]; then
+    source $HOME/.gtri_mbp_profile
+fi
+
+if [ -f $HOME/.gtri_server_profile ]; then
+    source $HOME/.gtri_server_profile
+fi
+#================================
+
 #
 # local installs
 #
@@ -67,11 +80,3 @@ if [ -d $HOME/.local ]; then
 fi
 
 
-# machine-specific profiles
-if [ -f $HOME/.gtri_mbp_profile ]; then
-    source $HOME/.gtri_mbp_profile
-fi
-
-if [ -f $HOME/.gtri_server_profile ]; then
-    source $HOME/.gtri_server_profile
-fi
