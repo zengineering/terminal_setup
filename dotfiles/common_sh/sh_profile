@@ -1,5 +1,6 @@
-echo "sh_profile"
-
+#============================
+# aliases
+#
 # bash editing/refreshing/viewing
 alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
@@ -28,6 +29,7 @@ alias clera='clear'
 
 # vagrant
 alias vagrantgo='vagrant up && vagrant ssh'
+#============================
 
 # tcl
 command -v tclsh /dev/null && {
@@ -49,6 +51,7 @@ case $OSTYPE in darwin*)
 ;; 
 esac
 
+# terminal color
 export TERM=xterm-256color
 
 #================================
@@ -62,7 +65,7 @@ if [ -f $HOME/.gtri_server_profile ]; then
 fi
 #================================
 
-#
+#================================
 # local installs
 #
 if [ -d $HOME/.local ]; then
@@ -77,6 +80,15 @@ if [ -d $HOME/.local ]; then
         export PATH="$HOME/.local/lua_install/bin:$PATH"
         export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
     fi
+fi
+#================================
+
+
+# VirtualenvWrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
 fi
 
 
