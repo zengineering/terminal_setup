@@ -16,6 +16,7 @@ fi
 ln -s $PWD $HOME/.terminal_setup
 ln -s $PWD $HOME/.vim
 ln -s $PWD/tmux-plugins $HOME/.tmux
+ln -s $PWD/prezto $HOME/.zprezto
 
 link_dotfiles vim
 link_dotfiles tmux
