@@ -1,8 +1,7 @@
 #============================
 # aliases
 #
-# bash editing/refreshing/viewing
-alias sb='source ~/.bashrc'
+# bash editing/refreshing/viewing alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
 
 alias sbp='source ~/.bash_profile'
@@ -84,6 +83,7 @@ fi
 #================================
 
 
+#================================
 # VirtualenvWrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
@@ -91,4 +91,9 @@ elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
+command -v lsvirtualenv >/dev/null 2>&1 && {
+    mkdir -p $HOME/.virtualenv
+    export WORKON_HOME="$HOME/.virtualenv"
+}
+#================================
 
