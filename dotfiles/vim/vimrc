@@ -34,7 +34,7 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "Searching
 set ignorecase
 set hlsearch
-set incsearch
+"set incsearch
 
 "Display
 "set laststatus=2
@@ -145,3 +145,14 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " disable preview window for completion
 set completeopt-=preview
+
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" easymotion + incsearch
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
+
