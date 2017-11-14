@@ -15,4 +15,6 @@ if [[ -s "$HOME/.sh_profile" ]]; then
   source "$HOME/.sh_profile"
 fi
 
+export PATH="$PATH:/usr/sbin"
+
 clear
