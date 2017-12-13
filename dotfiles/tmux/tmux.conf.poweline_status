@@ -1,0 +1,72 @@
+# normal status left/right sections separators
+#status_left_separator_main=''
+#status_left_separator_sub='|'
+#status_right_separator_main=''
+#status_right_separator_sub='|'
+
+# powerline status left/right sections separators
+status_left_separator_main=''  # /!\ you don't need to install Powerline
+status_left_separator_sub=''   #   you only need fonts patched with
+status_right_separator_main='' #   Powerline symbols or the standalone
+status_right_separator_sub=''  #   PowerlineSymbols.otf font
+
+# general fg/bg
+status_main_bg=colour0
+status_main_fg=colour250
+
+# prefix indicator
+status_prefix_char='❖'
+status_prefix_bg=$status_main_bg
+status_prefix_fg=colour202
+#status_prefix_fg=colour3
+status_prefix="#[bg=status_prefix_bg,fg=status_prefix_fg,bold]#{?client_prefix,$status_prefix_char,}"
+
+# TODO: root
+#root_symbol='🎩''
+#root_symbol='♕''
+#root_symbol='♔''
+
+# time and date 
+status_time_bg=$status_main_bg
+status_time_fg=colour38
+status_time="#[bg=$status_time_bg,fg=$status_time_fg]#{status_right_separator_sub} %H:%M #{status_right_separator_sub} (%a) %h.%d.%Y"
+
+# cpu utilization
+status_cpu_bg=colour238
+status_cpu="#[fg=$status_cpu_bg]#{status_right_separator_main}#[bg=$status_cpu_bg]#{cpu_fg_color} CPU: #{cpu_icon}#{cpu_percentage}"
+
+# hostname
+status_host_bg=colour17
+status_host_fg=colour250
+status_date="#[fg=$status_date_bg]#{status_right_separator_main}#[bg=$status_date_bg,fg=$status_date_fg] (%a) %h.%d.%Y"
+status_host="#[fg=$status_host_bg]#{status_right_separator_main}#[bg=$status_host_bg,fg=$status_host_fg] #H"
+
+set -g status-left-length 1000
+set -g status-right-length 1000
+
+status_pane_bg=$status_main_bg
+status_pane_fg=colour42
+status_pane_fmt="#I #W"
+status_current_pane_bg=colour42
+status_current_pane_fg=colour232
+
+setw -g window-status-style "fg=$status_pane_fg,bg=$status_pane_bg"
+#TODO: circled_digits
+setw -g window-status-format "$status_pane_fmt"
+setw -g window-status-current-style "fg=$status_current_pane_fg,bg=$status_current_pane_bg,bold"
+setw -g window-status-current-format "#[fg=$status_pane_bg,bg=$status_current_pane_bg]#{status_left_separator_main} $status_pane_fmt #[fg=status_current_pane_bg]#{status_left_separator_main}"
+
+# status bar
+setw -g status-bg $status_main_bg
+setw -g status-fg $status_main_fg
+setw -g window-status-current-bg colour35
+setw -g window-status-current-fg colour235
+setw -g window-status-current-attr bold
+
+set -g status-right "\
+$status_prefix \
+$status_time \
+$status_cpu \
+$status_host \
+"
+
