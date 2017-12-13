@@ -172,3 +172,6 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 " pretty-print json
 command Jsonify % !python -m json.tool
 
+" escape insert mode
+inoremap ;; <Esc>
+
