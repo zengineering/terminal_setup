@@ -1,3 +1,6 @@
+#=============================================
+#       Separator symbols
+
 # normal status left/right sections separators
 #status_left_separator_main=''
 #status_left_separator_sub='|'
@@ -14,59 +17,87 @@ status_right_separator_sub=''  #   PowerlineSymbols.otf font
 status_main_bg=colour0
 status_main_fg=colour255
 
+# panes
+status_pane_bg=$status_main_bg
+status_pane_fg=colour6
+status_pane_fmt=" #I #W "
+
+status_current_pane_bg=colour4
+status_current_pane_fg=$status_main_bg
+
+pane_activity_fg=colour9
+pane_activity_bg=$status_main_bg
+
+last_pane_fg=colour5
+last_pane_bg=$status_main_bg
+
+pane_border_fg=colour250
+pane_border_bg=default
+active_pane_border_fg=colour82
+active_pane_border_bg=default
+
+#---------------------------------------------
+
+#=============================================
+#       Status line widgets
+
 # prefix indicator
-status_prefix_char='❖'
+#status_prefix_char='❖'
+status_prefix_char='💡' 
 status_prefix_bg=$status_main_bg
 status_prefix_fg=colour202
-#status_prefix_fg=colour3
 status_prefix="#[bg=status_prefix_bg,fg=status_prefix_fg,bold]#{?client_prefix,$status_prefix_char,}"
 
 # TODO: root
 #root_symbol='🎩''
-#root_symbol='♕''
-#root_symbol='♔''
+#♕♔
 
 # time and date 
 status_time_bg=$status_main_bg
 status_time_fg=colour38
-status_time="#[bg=$status_time_bg,fg=$status_time_fg]#{status_right_separator_sub} %H:%M #{status_right_separator_sub} (%a) %h.%d.%Y"
+status_time="#[bg=$status_time_bg,fg=$status_time_fg]#{status_right_separator_sub} %H:%M #{status_right_separator_sub} %a-%h.%d.%Y"
 
 # cpu utilization
-status_cpu_bg=colour238
+status_cpu_bg=colour236
 status_cpu="#[fg=$status_cpu_bg]#{status_right_separator_main}#[bg=$status_cpu_bg]#{cpu_fg_color} CPU: #{cpu_icon}#{cpu_percentage}"
 
 # hostname
 status_host_bg=colour17
 status_host_fg=colour250
-status_date="#[fg=$status_date_bg]#{status_right_separator_main}#[bg=$status_date_bg,fg=$status_date_fg] (%a) %h.%d.%Y"
+status_date="#[fg=$status_date_bg]#{status_right_separator_main}#[bg=$status_date_bg,fg=$status_date_fg] [%a] %h.%d.%Y"
 status_host="#[fg=$status_host_bg]#{status_right_separator_main}#[bg=$status_host_bg,fg=$status_host_fg] #H"
 
+# session
+session_fg=$status_main_bg
+session_bg=colour202
+session_char='❖'
+session="#[fg=$session_fg,bg=$session_bg]$session_char #S #[fg=$session_bg,bg=$status_main_bg]#{status_left_separator_main}"
+#🌿🍀🌙🌎🔘
+#---------------------------------------------
+
+#=============================================
+#       Configure Tmux
+
+# max length of status bars
 set -g status-left-length 1000
 set -g status-right-length 1000
 
-status_pane_bg=$status_main_bg
-status_pane_fg=colour6
-status_pane_fmt=" #I #W "
-status_current_pane_bg=colour14
-status_current_pane_fg=$status_main_bg
-
-# main status bar
+# status bar
 setw -g status-bg $status_main_bg
 setw -g status-fg $status_main_fg
-#setw -g window-status-current-bg colour35
-#setw -g window-status-current-fg colour235
-#setw -g window-status-current-attr bold
 
+# panes
 setw -g window-status-style "fg=$status_pane_fg,bg=$status_pane_bg"
-#TODO: circled_digits
-setw -g window-status-format "$status_pane_fmt"
+setw -g window-status-format "$status_pane_fmt" #TODO: circled_digits
 setw -g window-status-current-style "fg=$status_current_pane_fg,bg=$status_current_pane_bg"
-setw -g window-status-current-format "#[fg=$status_pane_bg,bg=$status_current_pane_bg]#{status_left_separator_main}#[fg=default,bg=default,default] $status_pane_fmt #[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_left_separator_main}"
+setw -g window-status-current-format "#[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_right_separator_main}#[fg=default,bg=default] $status_pane_fmt #[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_left_separator_main}"
+setw -g window-status-activity-style "fg=$pane_activity_fg,bg=$pane_activity_bg,default"
+setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg,default"
+setw -g pane-border-style "fg=$pane_border_fg,bg=$pane_border_bg"
+setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_border_bg"
+setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg,default"
 
-set -g status-right "\
-$status_prefix \
-$status_time \
-$status_cpu \
-$status_host \
-"
-
+# status bars
+set -g status-left "$status_prefix $session "
+set -g status-right "$status_time $status_cpu $status_host "
+#---------------------------------------------
