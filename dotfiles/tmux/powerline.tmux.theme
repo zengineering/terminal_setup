@@ -17,20 +17,20 @@ right_separator_sub=''  #   PowerlineSymbols.otf font
 main_bg=colour0
 main_fg=colour255
 
-# panes
-pane_bg=$main_bg
-pane_fg=colour6
-#pane_fmt="#I #W "
-pane_fmt='#(sh $HOME/.terminal_setup/tmux-plugins/tmux_cmd.sh _circled_digit "#I")  #W'
+# windows
+window_bg=$main_bg
+window_fg=colour6
+#window_fmt="#I #W "
+window_fmt='#(sh $HOME/.terminal_setup/tmux-plugins/tmux_cmd.sh _circled_digit "#I")  #W'
 
-current_pane_bg=colour23
-current_pane_fg=colour254
+current_window_bg=colour23
+current_window_fg=colour254
 
-pane_activity_fg=colour9
-pane_activity_bg=$main_bg
+window_activity_fg=colour9
+window_activity_bg=$main_bg
 
-last_pane_fg=colour5
-last_pane_bg=$main_bg
+last_window_fg=colour5
+last_window_bg=$main_bg
 
 pane_border_fg=colour250
 pane_border_bg=default
@@ -87,13 +87,13 @@ set -g status-right-length 1000
 setw -g status-bg $main_bg
 setw -g status-fg $main_fg
 
-# panes
-setw -g window-status-style "fg=$pane_fg,bg=$pane_bg"
-setw -g window-status-format " $pane_fmt" 
-setw -g window-status-current-style "fg=$current_pane_fg,bg=$current_pane_bg"
-setw -g window-status-current-format "#[fg=$current_pane_bg,bg=$pane_bg]#{right_separator_main}#[fg=default,bg=default] $pane_fmt #[fg=$current_pane_bg,bg=$pane_bg]#{left_separator_main}"
-setw -g window-status-activity-style "fg=$pane_activity_fg,bg=$pane_activity_bg"
-setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg"
+# windows
+setw -g window-status-style "fg=$window_fg,bg=$window_bg"
+setw -g window-status-format " $window_fmt" 
+setw -g window-status-current-style "fg=$current_window_fg,bg=$current_window_bg"
+setw -g window-status-current-format "#[fg=$current_window_bg,bg=$window_bg]#{right_separator_main}#[fg=default,bg=default] $window_fmt #[fg=$current_window_bg,bg=$window_bg]#{left_separator_main}"
+setw -g window-status-activity-style "fg=$window_activity_fg,bg=$window_activity_bg"
+setw -g window-status-last-style "fg=$last_window_fg,bg=$last_window_bg"
 setw -g pane-border-style "fg=$pane_border_fg,bg=$pane_border_bg"
 setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_border_bg"
 
