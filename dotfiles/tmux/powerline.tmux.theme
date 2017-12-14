@@ -23,8 +23,8 @@ pane_fg=colour6
 #pane_fmt="#I #W "
 pane_fmt='#(sh $HOME/.terminal_setup/tmux-plugins/tmux_cmd.sh _circled_digit "#I")  #W'
 
-current_pane_bg=colour6
-current_pane_fg=$main_bg
+current_pane_bg=colour23
+current_pane_fg=colour254
 
 pane_activity_fg=colour9
 pane_activity_bg=$main_bg
