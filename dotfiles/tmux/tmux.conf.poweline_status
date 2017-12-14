@@ -12,7 +12,7 @@ status_right_separator_sub=''  #   PowerlineSymbols.otf font
 
 # general fg/bg
 status_main_bg=colour0
-status_main_fg=colour250
+status_main_fg=colour255
 
 # prefix indicator
 status_prefix_char='❖'
@@ -45,23 +45,23 @@ set -g status-left-length 1000
 set -g status-right-length 1000
 
 status_pane_bg=$status_main_bg
-status_pane_fg=colour42
-status_pane_fmt="#I #W"
-status_current_pane_bg=colour42
-status_current_pane_fg=colour232
+status_pane_fg=colour6
+status_pane_fmt=" #I #W "
+status_current_pane_bg=colour14
+status_current_pane_fg=$status_main_bg
+
+# main status bar
+setw -g status-bg $status_main_bg
+setw -g status-fg $status_main_fg
+#setw -g window-status-current-bg colour35
+#setw -g window-status-current-fg colour235
+#setw -g window-status-current-attr bold
 
 setw -g window-status-style "fg=$status_pane_fg,bg=$status_pane_bg"
 #TODO: circled_digits
 setw -g window-status-format "$status_pane_fmt"
-setw -g window-status-current-style "fg=$status_current_pane_fg,bg=$status_current_pane_bg,bold"
-setw -g window-status-current-format "#[fg=$status_pane_bg,bg=$status_current_pane_bg]#{status_left_separator_main} $status_pane_fmt #[fg=status_current_pane_bg]#{status_left_separator_main}"
-
-# status bar
-setw -g status-bg $status_main_bg
-setw -g status-fg $status_main_fg
-setw -g window-status-current-bg colour35
-setw -g window-status-current-fg colour235
-setw -g window-status-current-attr bold
+setw -g window-status-current-style "fg=$status_current_pane_fg,bg=$status_current_pane_bg"
+setw -g window-status-current-format "#[fg=$status_pane_bg,bg=$status_current_pane_bg]#{status_left_separator_main}#[fg=default,bg=default,default] $status_pane_fmt #[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_left_separator_main}"
 
 set -g status-right "\
 $status_prefix \
