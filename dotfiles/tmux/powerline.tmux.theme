@@ -23,7 +23,7 @@ status_pane_fg=colour6
 #status_pane_fmt="#I #W "
 status_pane_fmt='#(sh $HOME/.terminal_setup/tmux-plugins/tmux_cmd.sh _circled_digit "#I")  #W'
 
-status_current_pane_bg=colour4
+status_current_pane_bg=colour6
 status_current_pane_fg=$status_main_bg
 
 pane_activity_fg=colour9
