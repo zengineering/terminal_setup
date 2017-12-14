@@ -20,7 +20,8 @@ status_main_fg=colour255
 # panes
 status_pane_bg=$status_main_bg
 status_pane_fg=colour6
-status_pane_fmt=" #I #W "
+#status_pane_fmt="#I #W "
+status_pane_fmt='#(sh $HOME/.terminal_setup/tmux-plugins/tmux_cmd.sh _circled_digit "#I")  #W'
 
 status_current_pane_bg=colour4
 status_current_pane_fg=$status_main_bg
@@ -33,7 +34,7 @@ last_pane_bg=$status_main_bg
 
 pane_border_fg=colour250
 pane_border_bg=default
-active_pane_border_fg=colour82
+active_pane_border_fg=colour3
 active_pane_border_bg=default
 
 #---------------------------------------------
@@ -88,14 +89,13 @@ setw -g status-fg $status_main_fg
 
 # panes
 setw -g window-status-style "fg=$status_pane_fg,bg=$status_pane_bg"
-setw -g window-status-format "$status_pane_fmt" #TODO: circled_digits
+setw -g window-status-format " $status_pane_fmt" 
 setw -g window-status-current-style "fg=$status_current_pane_fg,bg=$status_current_pane_bg"
 setw -g window-status-current-format "#[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_right_separator_main}#[fg=default,bg=default] $status_pane_fmt #[fg=$status_current_pane_bg,bg=$status_pane_bg]#{status_left_separator_main}"
-setw -g window-status-activity-style "fg=$pane_activity_fg,bg=$pane_activity_bg,default"
-setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg,default"
+setw -g window-status-activity-style "fg=$pane_activity_fg,bg=$pane_activity_bg"
+setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg"
 setw -g pane-border-style "fg=$pane_border_fg,bg=$pane_border_bg"
 setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_border_bg"
-setw -g window-status-last-style "fg=$last_pane_fg,bg=$last_pane_bg,default"
 
 # status bars
 set -g status-left "$status_prefix $session "
