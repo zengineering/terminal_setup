@@ -1,7 +1,3 @@
-# Change bind key
-set -g prefix C-a
-bind-key C-a send-prefix
-
 # status bar
 setw -g status-bg colour236
 setw -g status-fg colour245

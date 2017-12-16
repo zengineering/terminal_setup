@@ -13,14 +13,26 @@ if [ $(basename $PWD) != terminal_setup ]; then
     exit 1
 fi
 
+# directories
 ln -s $PWD $HOME/.terminal_setup
 ln -s $PWD $HOME/.vim
 ln -s $PWD/tmux-plugins $HOME/.tmux
 ln -s $PWD/prezto $HOME/.zprezto
 
+# dotfiles
 link_dotfiles vim
 link_dotfiles tmux
 link_dotfiles bash
 link_dotfiles zsh
 link_dotfiles common_sh
 
+# config files
+if [ -d $HOME/.config ]; then
+    for dir in $PWD/config/*/; do
+        if [ ! -d $HOME/.config/$(basename $dir) ]; then
+            ln -s $dir $HOME/.config/$(basename $dir)
+        fi
+    done
+else 
+    ln -s $PWD/config $HOME/.config
+fi
