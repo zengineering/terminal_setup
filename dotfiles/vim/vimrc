@@ -50,7 +50,7 @@ augroup END
 "set spelllang=en
 
 "Timeouts - account for annoying delays in nested tmux
-set timeoutlen=1000
+set timeoutlen=500
 set ttimeoutlen=0
 
 "Folding
