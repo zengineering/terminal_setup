@@ -53,6 +53,17 @@ esac
 # terminal color
 export TERM=xterm-256color
 
+# tmux colors
+tmuxcolors() {
+    for i in {0..255}; do printf "\x1b[38;5;${i}mcolour%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
+}
+
+# Go
+command -v go >/dev/null 2>&1 && {
+    export GOPATH=$(go env GOPATH)
+    export PATH="$PATH:$GOPATH/bin"
+}
+
 #================================
 # machine-specific profiles
 if [ -f $HOME/.gtri_mbp_profile ]; then
@@ -97,7 +108,3 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
 }
 #================================
 
-# tmux colors
-tmuxcolors() {
-    for i in {0..255}; do printf "\x1b[38;5;${i}mcolour%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
-}
