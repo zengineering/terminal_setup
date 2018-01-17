@@ -50,7 +50,7 @@ augroup END
 "set spelllang=en
 
 "Timeouts - account for annoying delays in nested tmux
-set timeoutlen=1000
+set timeoutlen=500
 set ttimeoutlen=0
 
 "Folding
@@ -170,8 +170,16 @@ map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
 " pretty-print json
-command Jsonify % !python -m json.tool
+command! Jsonify % !python -m json.tool
 
 " escape insert mode
 inoremap ;; <Esc>
 
+" saved/loaded info
+set viminfo=%,'10,f1,/20,:64,n~/.viminfo
+"           | |   |  |   |   > viminfo file location
+"           | |   |  |   > command history
+"           | |   |  > search history
+"           | |   > save global marks ('file bookmarks')
+"           | > files for which to save marks
+"           > buffer list (open files)
