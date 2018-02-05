@@ -78,6 +78,10 @@ if [ -f $HOME/.toshiba_profile ]; then
     source $HOME/.toshiba_profile
 fi
 
+if [ -f $HOME/.silver_profile.sh ]; then
+    source $HOME/.silver_profile.sh
+fi
+
 #================================
 
 #================================
