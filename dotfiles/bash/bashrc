@@ -94,8 +94,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # profile
-if [ -f $HOME/.sh_profile ]; then
-    source $HOME/.sh_profile
+if [ -f $HOME/.common_profile.sh ]; then
+    source $HOME/.common_profile.sh
 fi
 
 # enable programmable completion features (you don't need to enable
