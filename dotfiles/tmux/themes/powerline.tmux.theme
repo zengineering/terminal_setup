@@ -56,7 +56,7 @@ prefix="#[bg=prefix_bg,fg=prefix_fg,bold]#{?client_prefix,$prefix_char, }"
 # time and date 
 time_bg=$main_bg
 time_fg=colour38
-time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} %H:%M #{right_separator_sub} %a-%h.%d.%Y"
+time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} {%H:%M} %a %m.%d.%Y"
 
 # cpu utilization
 cpu_bg=colour236
@@ -65,7 +65,7 @@ cpu="#[fg=$cpu_bg]#{right_separator_main}#[bg=$cpu_bg]#{cpu_fg_color} CPU: #{cpu
 # hostname
 host_bg=colour17
 host_fg=colour250
-date="#[fg=$date_bg]#{right_separator_main}#[bg=$date_bg,fg=$date_fg] [%a] %h.%d.%Y"
+#date="#[fg=$date_bg]#{right_separator_main}#[bg=$date_bg,fg=$date_fg] [%a] %h.%d.%Y"
 host="#[fg=$host_bg]#{right_separator_main}#[bg=$host_bg,fg=$host_fg] #H"
 
 # session
