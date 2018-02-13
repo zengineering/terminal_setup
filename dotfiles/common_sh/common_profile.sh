@@ -64,6 +64,9 @@ command -v go >/dev/null 2>&1 && {
     export PATH="$PATH:$GOPATH/bin"
 }
 
+# zsh
+export ZSH_LOC=$(which zsh)
+
 #================================
 # machine-specific profiles
 if [ -f $HOME/.gtri_mbp_profile ]; then
