@@ -56,7 +56,7 @@ prefix="#[bg=prefix_bg,fg=prefix_fg,bold]#{?client_prefix,$prefix_char, }"
 # time and date 
 time_bg=$main_bg
 time_fg=colour38
-time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} [%H:%M] %a %m.%d.%Y"
+time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} {%H:%M} %a %m.%d.%Y"
 
 # cpu utilization
 cpu_bg=colour236
@@ -70,8 +70,7 @@ host="#[fg=$host_bg]#{right_separator_main}#[bg=$host_bg,fg=$host_fg] #H"
 
 # session
 session_fg=$main_bg
-#session_bg=colour202
-session_bg=colour28
+session_bg=colour202
 session_char='❖'
 session="#[fg=$session_fg,bg=$session_bg]$session_char #S #[fg=$session_bg,bg=$main_bg]#{left_separator_main}"
 #🌿🍀🌙🌎🔘
@@ -100,5 +99,5 @@ setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_bord
 
 # status bars
 set -g status-left "$prefix $session "
-set -g status-right "$time $cpu "
+set -g status-right "$time $cpu $host "
 #---------------------------------------------
