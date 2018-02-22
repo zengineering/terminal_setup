@@ -1,5 +1,6 @@
 export GOROOT="$HOME/.local/go"
-export JAVA_HOME="$HOME/.local/jdk-9.0.4"
+#export JAVA_HOME="$HOME/.local/jdk-9.0.4"
+export JAVA_HOME="$HOME/.local/jdk1.8.0_161"
 export KOTLIN_HOME="$HOME/.local/kotlinc"
 export LUA_HOME="$HOME/.local/lua"
 
