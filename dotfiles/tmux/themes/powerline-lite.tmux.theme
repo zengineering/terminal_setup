@@ -99,5 +99,5 @@ setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_bord
 
 # status bars
 set -g status-left "$prefix $session "
-set -g status-right "$time $cpu $host "
+set -g status-right "$time $cpu "
 #---------------------------------------------
