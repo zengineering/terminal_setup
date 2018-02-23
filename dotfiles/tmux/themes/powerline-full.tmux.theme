@@ -2,16 +2,16 @@
 #       Separator symbols
 
 # normal status left/right sections separators
-left_separator_main='|'
-left_separator_sub=''
-right_separator_main='|'
-right_separator_sub=''
+#left_separator_main=''
+#left_separator_sub='|'
+#right_separator_main=''
+#right_separator_sub='|'
 
 # powerline status left/right sections separators
-#left_separator_main=''  # /!\ you don't need to install Powerline
-#left_separator_sub=''   #   you only need fonts patched with
-#right_separator_main='' #   Powerline symbols or the standalone
-#right_separator_sub=''  #   PowerlineSymbols.otf font
+left_separator_main=''  # /!\ you don't need to install Powerline
+left_separator_sub=''   #   you only need fonts patched with
+right_separator_main='' #   Powerline symbols or the standalone
+right_separator_sub=''  #   PowerlineSymbols.otf font
 
 # general fg/bg
 main_bg=colour0
@@ -65,14 +65,14 @@ cpu="#[fg=$cpu_bg]#{right_separator_main}#[bg=$cpu_bg]#{cpu_fg_color} CPU: #{cpu
 # hostname
 host_bg=colour17
 host_fg=colour250
-date="#[fg=$date_bg]#{right_separator_main}#[bg=$date_bg,fg=$date_fg] [%a] %h.%d.%Y"
+#date="#[fg=$date_bg]#{right_separator_main}#[bg=$date_bg,fg=$date_fg] [%a] %h.%d.%Y"
 host="#[fg=$host_bg]#{right_separator_main}#[bg=$host_bg,fg=$host_fg] #H"
 
 # session
 session_fg=$main_bg
 session_bg=colour202
 session_char='❖'
-session="#[fg=$session_fg,bg=$session_bg]$session_char #S #[fg=$session_bg,bg=$main_bg]"
+session="#[fg=$session_fg,bg=$session_bg]$session_char #S #[fg=$session_bg,bg=$main_bg]#{left_separator_main}"
 #🌿🍀🌙🌎🔘
 #---------------------------------------------
 
@@ -99,5 +99,5 @@ setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_bord
 
 # status bars
 set -g status-left "$prefix $session "
-set -g status-right "$time $cpu "
+set -g status-right "$time $cpu $host "
 #---------------------------------------------
