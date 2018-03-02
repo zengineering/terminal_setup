@@ -28,19 +28,9 @@ alias clera='clear'
 
 # vagrant
 alias vagrantgo='vagrant up && vagrant ssh'
-#============================
 
-# tcl
-command -v tclsh /dev/null && {
-    alias tclsh='rlwrap tclsh'
-}
-
-# pdf viewing
-command -v pdftotext >/dev/null 2>&1 && {
-    termpdf() {
-        pdftotext -layout -nopgbrk $1 - | less
-    }
-}
+# git
+alias uncommit='git reset --mixed HEAD~'
 
 # show/hide hidden files in OSX
 case $OSTYPE in darwin*)
@@ -50,13 +40,36 @@ case $OSTYPE in darwin*)
 ;; 
 esac
 
-# terminal color
-export TERM=xterm-256color
+# tcl
+command -v tclsh /dev/null && {
+    alias tclsh='rlwrap tclsh'
+}
+
+#============================
+# Commands
+#
+
+# pdf viewing
+command -v pdftotext >/dev/null 2>&1 && {
+    termpdf() {
+        pdftotext -layout -nopgbrk $1 - | less
+    }
+}
 
 # tmux colors
 tmuxcolors() {
     for i in {0..255}; do printf "\x1b[38;5;${i}mcolour%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
 }
+
+
+#================================
+# Exports
+#
+# terminal color
+export TERM=xterm-256color
+
+# zsh
+export ZSH_LOC=$(which zsh)
 
 # Go
 command -v go >/dev/null 2>&1 && {
@@ -64,11 +77,10 @@ command -v go >/dev/null 2>&1 && {
     export PATH="$PATH:$GOPATH/bin"
 }
 
-# zsh
-export ZSH_LOC=$(which zsh)
 
 #================================
 # machine-specific profiles
+#
 if [ -f $HOME/.gtri_mbp_profile ]; then
     source $HOME/.gtri_mbp_profile
 fi
@@ -85,7 +97,6 @@ if [ -f $HOME/.silver_profile.sh ]; then
     source $HOME/.silver_profile.sh
 fi
 
-#================================
 
 #================================
 # local installs
@@ -103,11 +114,11 @@ if [ -d $HOME/.local ]; then
         export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
     fi
 fi
-#================================
 
 
 #================================
 # VirtualenvWrapper
+#
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
@@ -118,5 +129,7 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
     mkdir -p $HOME/.virtualenv
     export WORKON_HOME="$HOME/.virtualenv"
 }
+
+
 #================================
 
