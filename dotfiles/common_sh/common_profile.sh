@@ -103,7 +103,7 @@ fi
 #
 if [ -d $HOME/.local ]; then
     export PATH="$HOME/.local/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
     export MANPATH="$HOME/.local/share/man:$MANPATH"
     export INFOPATH="$HOME/.local/share/info:$INFOPATH"
     export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
