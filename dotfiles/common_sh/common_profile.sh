@@ -79,6 +79,25 @@ command -v go >/dev/null 2>&1 && {
 
 
 #================================
+# local installs
+#
+if [ -d $HOME/.local ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
+    export MANPATH="$HOME/.local/share/man:$MANPATH"
+    export INFOPATH="$HOME/.local/share/info:$INFOPATH"
+    export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
+    export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
+
+    if [ -d $HOME/.local/lua_install ]; then
+        export PATH="$HOME/.local/lua_install/bin:$PATH"
+        export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
+    fi
+fi
+
+#================================
+
+#================================
 # machine-specific profiles
 #
 if [ -f $HOME/.gtri_mbp_profile ]; then
@@ -97,25 +116,6 @@ if [ -f $HOME/.silver_profile.sh ]; then
     source $HOME/.silver_profile.sh
 fi
 
-
-#================================
-# local installs
-#
-if [ -d $HOME/.local ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
-    export MANPATH="$HOME/.local/share/man:$MANPATH"
-    export INFOPATH="$HOME/.local/share/info:$INFOPATH"
-    export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
-    export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
-
-    if [ -d $HOME/.local/lua_install ]; then
-        export PATH="$HOME/.local/lua_install/bin:$PATH"
-        export LD_LIBRARY_PATH="$HOME/.local/lua_install/lib:$LD_LIBRARY_PATH"
-    fi
-fi
-
-
 #================================
 # VirtualenvWrapper
 #
@@ -123,6 +123,8 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
+elif [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
+    source $HOME/.local/bin/virtualenvwrapper.sh
 fi
 
 command -v lsvirtualenv >/dev/null 2>&1 && {
@@ -130,6 +132,4 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
     export WORKON_HOME="$HOME/.virtualenv"
 }
 
-
-#================================
 
