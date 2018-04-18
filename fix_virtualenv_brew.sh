@@ -5,6 +5,6 @@
 if [ "$#" -ne 2 ]; then
     echo "Usage: ./fix_virtualenv_brew.sh <virtualenv name> <python version>"
 else 
-    gfind $HOME/.virtualenv/$1/ -type l -xtype 1 -delete
+    gfind $HOME/.virtualenv/$1/ -type l -xtype l -delete
     virtualenv $HOME/.virtualenv/$1/ -p $2
 fi
