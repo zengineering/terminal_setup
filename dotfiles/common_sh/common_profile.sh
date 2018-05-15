@@ -33,11 +33,21 @@ alias vagrantgo='vagrant up && vagrant ssh'
 alias uncommit='git reset --mixed HEAD~'
 
 # show/hide hidden files in OSX
-case $OSTYPE in darwin*)
+case $OSTYPE in 
+darwin*)
     alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
     alias brewuu='brew update && brew upgrade && brew cleanup'
-;; 
+    ;; 
+linux*)
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release OS=$NAME #VER=$VERSION_ID
+        if [ -n $(echo $NAME | grep -iq "arch") ]; then
+            alias pacman_remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'
+            alias pacman_update='sudo pacman -Syu'
+        fi
+    fi
+    ;;
 esac
 
 # tcl
