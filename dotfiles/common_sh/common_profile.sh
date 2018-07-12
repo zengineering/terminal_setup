@@ -105,6 +105,11 @@ if [ -d $HOME/.local ]; then
     fi
 fi
 
+if [ -d $HOME/anaconda3 ]; then
+    # added by Anaconda3 installer
+    export PATH="$HOME/anaconda3/bin:$PATH"
+fi
+
 #================================
 
 #================================
@@ -126,6 +131,10 @@ if [ -f $HOME/.silver_profile.sh ]; then
     source $HOME/.silver_profile.sh
 fi
 
+if [ -f $HOME/.vagrarch_profile.sh ]; then
+    source $HOME/.vagrarch_profile.sh
+fi
+
 #================================
 # VirtualenvWrapper
 #
@@ -141,5 +150,4 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
     mkdir -p $HOME/.virtualenv
     export WORKON_HOME="$HOME/.virtualenv"
 }
-
 
