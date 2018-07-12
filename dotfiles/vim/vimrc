@@ -69,6 +69,10 @@ nnoremap gR :grep '\b<cword>\b' *<CR>
 let g:syntastic_quiet_messages = { "type": "style" }
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
+"Highlight @ column=100
+highlight ColorColumn ctermbg=darkgray
+set colorcolumn=100
+
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "neocomplete
 "
