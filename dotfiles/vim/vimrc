@@ -60,9 +60,9 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
 "Grep-ing
-nnoremap gr :grep <cword> *<CR>
+nnoremap gr :grep -r <cword> *<CR>
 "nnoremap Gr :grep <cword> %:p:h/*<CR>
-nnoremap gR :grep '\b<cword>\b' *<CR>
+nnoremap gR :grep -r '\b<cword>\b' *<CR>
 "nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
 
 "Syntastic
@@ -176,8 +176,12 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 " pretty-print json
 command! Jsonify % !python -m json.tool
 
+" lint python
+command! Flake  % !python3 -m pyflakes
+command! Flake2 % !python2 -m pyflakes
+
 " escape insert mode
-inoremap ;; <Esc>
+inoremap ,, <Esc>
 
 " saved/loaded info
 set viminfo=%,'10,f1,/20,:64,n~/.viminfo
@@ -187,3 +191,10 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "           | |   > save global marks ('file bookmarks')
 "           | > files for which to save marks
 "           > buffer list (open files)
+
+" --------------------------
+"  Jinja templates
+"
+"  Convert 'command' to '{% command %}'
+command! Jinjafy :normal I {% <Esc>A %} <Esc>
+nnoremap jp :Jinjafy<CR>

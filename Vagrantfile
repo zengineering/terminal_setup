@@ -1,6 +1,6 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "terrywang/archlinux"
-  config.vm.provision :shell, path: "arch_setup.sh"
+  #config.vm.provision :shell, path: "arch_setup.sh"
   config.vm.synced_folder "./shared", "/shared"
 
   config.vm.provider "virtualbox" do |v|
