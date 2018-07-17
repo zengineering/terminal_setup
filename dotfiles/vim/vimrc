@@ -192,9 +192,13 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "           | > files for which to save marks
 "           > buffer list (open files)
 
+" open pdf
+:command! -complete=file -nargs=1 Openpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+
 " --------------------------
 "  Jinja templates
 "
 "  Convert 'command' to '{% command %}'
 command! Jinjafy :normal I {% <Esc>A %} <Esc>
 nnoremap jp :Jinjafy<CR>
+>>>>>>> 86b2f76b7a169a7de3e68612eb288da555a875b1
