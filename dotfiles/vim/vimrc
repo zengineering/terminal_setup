@@ -183,3 +183,7 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "           | |   > save global marks ('file bookmarks')
 "           | > files for which to save marks
 "           > buffer list (open files)
+
+" open pdf
+:command! -complete=file -nargs=1 Openpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+
