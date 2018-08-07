@@ -7,3 +7,5 @@ export LUA_HOME="$HOME/.local/lua"
 export PATH="$GOROOT/bin:$JAVA_HOME/bin:$KOTLIN_HOME/bin:$LUA_HOME/bin:$HOME/.rbenv/bin:$PATH"
 
 export RBENV_VERSION="2.5.0"
+
+#export PATH="/home/zane/miniconda3/bin:$PATH"
