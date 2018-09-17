@@ -34,7 +34,7 @@ last_window_bg=$main_bg
 
 pane_border_fg=colour250
 pane_border_bg=default
-active_pane_border_fg=colour3
+active_pane_border_fg=colour123
 active_pane_border_bg=default
 
 #---------------------------------------------

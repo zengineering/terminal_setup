@@ -123,6 +123,10 @@ if [ -f $HOME/.gtri_server_profile ]; then
     source $HOME/.gtri_server_profile
 fi
 
+if [ -f $HOME/.tmpo_ws1_profile ]; then
+    source $HOME/.tmpo_ws1_profile
+fi
+
 if [ -f $HOME/.toshiba_profile ]; then
     source $HOME/.toshiba_profile
 fi
