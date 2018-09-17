@@ -200,4 +200,4 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "
 "  Convert 'command' to '{% command %}'
 command! Jinjafy :normal I {% <Esc>A %} <Esc>
-nnoremap jp :Jinjafy<CR>
+"nnoremap jn :Jinjafy<CR>
