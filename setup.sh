@@ -36,3 +36,6 @@ if [ -d $HOME/.config ]; then
 else 
     ln -s $PWD/config $HOME/.config
 fi
+
+# git setup script
+$PWD/git_setup/setup_git.sh
