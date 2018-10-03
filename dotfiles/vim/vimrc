@@ -4,6 +4,34 @@ execute pathogen#infect()
 
 runtime! plugin/sensible.vim
 
+"=========================================
+"
+"       VIM itself
+"
+"=========================================
+
+"Auto reload vimrc
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" saved/loaded info
+set viminfo=%,'10,f1,/20,:64,n~/.viminfo
+"           | |   |  |   |   > viminfo file location
+"           | |   |  |   > command history
+"           | |   |  > search history
+"           | |   > save global marks ('file bookmarks')
+"           | > files for which to save marks
+"           > buffer list (open files)
+
+
+"=========================================
+"
+"       STYYYYYYLE
+"
+"=========================================
+
 "Terminal Coloring
 if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes
@@ -12,7 +40,9 @@ if &term =~ '256color'
 endif
 
 "Syntax coloring
+"----------
 syntax on
+"colorscheme Tomorrow-Night
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
 "colorscheme onedark
@@ -27,55 +57,66 @@ colorscheme obsidian
 set number
 
 "Indentation
+"----------
 "set autoindent
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "set backspace=indent,eol,start 
 
-"Searching
-set ignorecase
-set hlsearch
-"set incsearch
-
 "Display
+"----------
 "set laststatus=2
 set statusline='%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]'
 
-"Auto reload vimrc
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+"Highlight @ column=100
+"----------
+highlight ColorColumn ctermbg=darkgray
+set colorcolumn=100
+
+
+"=========================================
+"
+"       USAGE
+"
+"=========================================
+
+"Searching
+"----------
+set ignorecase
+set hlsearch
+"set incsearch
 
 "Spellcheck
 "set spelllang=en
 
 "Timeouts - account for annoying delays in nested tmux
+"----------
 set timeoutlen=500
 set ttimeoutlen=0
 
 "Folding
+"----------
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-"Grep-ing
-nnoremap gr :grep -r <cword> *<CR>
-"nnoremap Gr :grep <cword> %:p:h/*<CR>
-nnoremap gR :grep -r '\b<cword>\b' *<CR>
-"nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
+" escape insert mode
+inoremap ,, <Esc>
+
+
+"=========================================
+"
+"       PLUGINS
+"
+"=========================================
 
 "Syntastic
+"------------
 let g:syntastic_quiet_messages = { "type": "style" }
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_mode_map = { 'mode': 'active' }
 
-"Highlight @ column=100
-highlight ColorColumn ctermbg=darkgray
-set colorcolumn=100
-
-">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "neocomplete
-"
+"------------------------------------------------------------------------
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -146,14 +187,15 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
     " For perlomni.vim setting.
     " https://github.com/c9s/perlomni.vim
     let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"------------------------------------------------------------------------neocomplete
+
 
 " disable preview window for completion
 set completeopt-=preview
+"------------------------------------------------------------------------neocomplete
 
-" ---------------------------------------
+
 " incsearch
-" 
+" ---------------------------------------
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -166,38 +208,76 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-" ---------------------------------------
 
 " easymotion + incsearch
+" ---------------------------------------
 map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
-" pretty-print json
-command! Jsonify % !python -m json.tool
+
+"=========================================
+"
+"       CUSTOM COMMANDS
+"
+"=========================================
+
+"  Run a shell command and show the results in a separate window
+" --------------------------
+function! s:ExecuteInShell(command)
+  let command = join(map(split(a:command), 'expand(v:val)'))
+  let winnr = bufwinnr('^' . command . '$')
+  silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
+  setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+  echo 'Execute ' . command . '...'
+  silent! execute 'silent %!'. command
+  silent! execute 'resize ' . line('$')
+  silent! redraw
+  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  echo 'Shell command ' . command . ' executed.'
+endfunction
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
 
 " lint python
+" --------------------------
 command! Flake  % !python3 -m pyflakes
 command! Flake2 % !python2 -m pyflakes
 
-" escape insert mode
-inoremap ,, <Esc>
 
-" saved/loaded info
-set viminfo=%,'10,f1,/20,:64,n~/.viminfo
-"           | |   |  |   |   > viminfo file location
-"           | |   |  |   > command history
-"           | |   |  > search history
-"           | |   > save global marks ('file bookmarks')
-"           | > files for which to save marks
-"           > buffer list (open files)
+" pretty-print json
+command! Jsonify % !python -m json.tool
 
 " open pdf
+" --------------------------
 :command! -complete=file -nargs=1 Openpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
-" --------------------------
 "  Jinja templates
-"
+" --------------------------
 "  Convert 'command' to '{% command %}'
 command! Jinjafy :normal I {% <Esc>A %} <Esc>
 "nnoremap jn :Jinjafy<CR>
+
+
+"=========================================
+"
+"       TOOL MACROS
+"
+"=========================================
+
+"  Rust
+" --------------------------
+nnoremap mc :Shell cargo check <CR>
+nnoremap mr :Shell cargo run <CR>
+nnoremap mb :Shell cargo build <CR>
+
+
+"Grep-ing
+"----------
+"nnoremap Gr :grep <cword> %:p:h/*<CR>
+"nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
+nnoremap gr :grep -r <cword> *<CR>
+nnoremap gR :grep -r '\b<cword>\b' *<CR>
+
+
