@@ -155,3 +155,12 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
     export WORKON_HOME="$HOME/.virtualenv"
 }
 
+
+#================================
+# Rust
+#
+echo "hello rust"
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
