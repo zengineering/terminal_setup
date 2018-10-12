@@ -105,10 +105,9 @@ if [ -d $HOME/.local ]; then
     fi
 fi
 
-#if [ -d $HOME/anaconda3 ]; then
-#    # added by Anaconda3 installer
-#    export PATH="$HOME/anaconda3/bin:$PATH"
-#fi
+if [ -d $HOME/anaconda3 ]; then
+    export PATH="$PATH:$HOME/anaconda3/bin"
+fi
 
 #================================
 
