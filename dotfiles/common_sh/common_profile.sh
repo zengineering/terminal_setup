@@ -158,7 +158,6 @@ command -v lsvirtualenv >/dev/null 2>&1 && {
 #================================
 # Rust
 #
-echo "hello rust"
 if [ -d $HOME/.cargo/bin ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
