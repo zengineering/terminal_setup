@@ -1,0 +1,43 @@
+
+altscreen on
+
+# Enable 256 color term
+term xterm-256color
+
+# Cache 30000 lines for scroll back
+defscrollback 10000
+
+# change command character from ctrl-a to ctrl-b (emacs users may want this)
+escape ^Jj
+
+# reload screenrc with {C-a R}
+bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"
+
+# Statusline
+hardstatus alwayslastline 
+hardstatus string '%{wk}{%{kc}vagrant%{wk}} %{= Kd} %-w%{= Bk}[%n] %t%{= Kd}%+w %-= %{KY}%101`%{KG}%D %m.%d.%Y%{= KG} %c%{-}'
+
+# Statusline how-to
+# http://www.gnu.org/software/screen/manual/html_node/String-Escapes.html 
+# e.g. hardstatus string "%{= KW} %H [%`] %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%C%a %Y-%M-%d"
+# %{= wK} : set colors to bright black (K) on default (d) and keep current text styles (=) 
+# %H : hostname 
+# # [ : opening bracket character 
+# %` : print output of 'backtick' command (defined elsewhere in .screenrc) 
+# ] : closing bracket character 
+# %{= wW} : set colors to white (w) on bright black (K) and keep current text styles (=) 
+# | : bar character # ${-} : restore colors to previous colors / undo last color change 
+# %-Lw : list windows before current window (L [optional] = "include flags") 
+# %{= bW} : set colors to bright white (W) on blue (b) and keep current text styles (=) 
+# %f : window flags 
+# %t : window title 
+# %{-} : restore colors to previous colors / undo last color change 
+# %+Lw : list windows after current window (L [optional] = "include flags") 
+# %= : expand to fill all space (used here to make remaining content flush right) 
+# %C : current time (12-hr; 24-hr is %c) 
+# %a : am/pm (lowercase; uppercase is %A) 
+# %Y : current year 
+# - : hyphen character 
+# %m : current month (0-padded; %M for "Jan" etc.) 
+# - : hyphen character 
+# %d : current date (0-padded) 
