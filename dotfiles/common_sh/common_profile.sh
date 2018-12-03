@@ -138,6 +138,10 @@ if [ -f $HOME/.vagrarch_profile.sh ]; then
     source $HOME/.vagrarch_profile.sh
 fi
 
+if [ -f $HOME/.cisco_mbp_profile ]; then
+    source $HOME/.cisco_mbp_profile
+fi
+
 #================================
 # VirtualenvWrapper
 #
