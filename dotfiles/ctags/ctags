@@ -1,0 +1,10 @@
+--exclude=\*.swp
+--exclude=\*.swo
+--exclude=build
+--exclude=__pycache__
+--exclude=\*.pyc
+--exclude=.git
+--exclude=.svn
+
+--recurse=yes
+--tag-relative=yes
