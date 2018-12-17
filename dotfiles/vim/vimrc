@@ -42,7 +42,7 @@ endif
 "Syntax coloring
 "----------
 syntax on
-"colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
 "colorscheme onedark
@@ -51,7 +51,10 @@ syntax on
 "colorscheme apprentice
 "colorscheme wombat256mod
 "colorscheme seoul256
-colorscheme obsidian
+"colorscheme obsidian
+
+"au BufEnter * exec 'colorscheme '.(&ft=='xml' ? 'Tomorrow-Night' : 'Tomorrow-Night-Eighties')
+"au BufEnter * exec 'colorscheme '.(&ft=='cpp' ? 'Tomorrow-Night' : 'Tomorrow-Night-Eighties')
 
 "Set line numbers
 set number
@@ -102,6 +105,9 @@ set foldlevel=1         "this is just what i use
 
 " escape insert mode
 inoremap ,, <Esc>
+
+" change leader key
+let mapleader = ","
 
 
 "=========================================
@@ -221,6 +227,17 @@ map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
+" Ctags
+" --------------------------
+nnoremap <Leader>p :CtrlPTag<CR>
+nmap <Leader>. :CtrlPTag<CR><C-\>w
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+set tags=./.tags,.tags;$HOME
+
+" CtrlP
+" --------------------------
+let g:ctrlp_root_markers=".tags"
+
 
 "=========================================
 "
@@ -279,11 +296,21 @@ nnoremap mr :Shell cargo run <CR>
 nnoremap mb :Shell cargo build <CR>
 
 
-"Grep-ing
-"----------
+" Grep-ing
+" --------------------------
 "nnoremap Gr :grep <cword> %:p:h/*<CR>
 "nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
 nnoremap gr :grep -r <cword> *<CR>
 nnoremap gR :grep -r '\b<cword>\b' *<CR>
 
+
+"=========================================
+"
+"       Resizing and Movement
+"
+"=========================================
+nnoremap <Leader>h :vertical resize -10<CR>
+nnoremap <Leader>l :vertical resize +10<CR>
+nnoremap <Leader>j :vertical resize -10<CR>
+nnoremap <Leader>k :vertical resize +10<CR>
 
