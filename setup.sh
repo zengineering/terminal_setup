@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 link_dotfiles() {
     for f in $PWD/dotfiles/$1/*; do 
         echo "$f -> $HOME/.$(basename $f)"
@@ -25,6 +27,7 @@ link_dotfiles tmux
 link_dotfiles bash
 link_dotfiles zsh
 link_dotfiles common_sh
+link_dotfiles ctags
 
 # config files
 if [ -d $HOME/.config ]; then
