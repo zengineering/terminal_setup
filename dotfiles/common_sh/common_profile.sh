@@ -166,3 +166,21 @@ if [ -d $HOME/.cargo/bin ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+
+#================================
+# Homebrew Python
+#
+if [ -d $HOME/Library/Python/3.7/bin ]; then
+    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+fi
+
+if [ -d $HOME/Library/Python/2.7/bin ]; then
+    export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+fi
+
+
+#================================
+# ctags
+#
+alias tagit="ctags --tag-relative -f .tags -R &"
+
