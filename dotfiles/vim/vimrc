@@ -33,12 +33,19 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "
 "=========================================
 
-"Terminal Coloring
-set t_Co=256
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    "     " render properly when inside 256-color tmux and GNU screen.
-    set t_ut=
+"Terminal Coloring (i.e. Blackmagic I don't understand)
+"----------
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+else
+    set t_Co=256
+    if &term =~ '256color'
+        " disable Background Color Erase (BCE) so that color schemes
+        "     " render properly when inside 256-color tmux and GNU screen.
+        set t_ut=
+    endif
 endif
 
 "Syntax coloring
@@ -242,6 +249,8 @@ nnoremap <silent><Leader>t <C-w><C-]><C-w>T
 nnoremap <silent><Leader>w <C-w>}
 " Toggle Tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
+" Open Tagbar on left
+let g:tagbar_left = 1
 " Tell vim where to look for tags, i.e. .tags in pwd, or up until HOME
 set tags=./.tags,.tags;$HOME
 " CtrlP searches up until it find this
@@ -253,13 +262,12 @@ set noshowmode
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='tomorrow'
-"let g:airline_theme='bubblegum'
-"let g:airline_theme='durant'
-"let g:airline_theme='base16'
+let g:airline_theme='deus'
+"let g:airline_theme='tomorrow'
 "let g:airline_theme='understated'
+"let g:airline_theme='bubblegum'
+"let g:airline_theme='base16'
 "let g:airline_theme='simple'
-"let g:airline_theme='deus'
 "let g:airline_theme='luna'
 "let g:airline_theme='solarized'
 "let g:airline_solarized_bg='dark'
@@ -317,9 +325,9 @@ command! Jinjafy :normal I {% <Esc>A %} <Esc>
 
 "  Rust
 " --------------------------
-nnoremap mc :Shell cargo check <CR>
-nnoremap mr :Shell cargo run <CR>
-nnoremap mb :Shell cargo build <CR>
+"nnoremap mc :Shell cargo check <CR>
+"nnoremap mr :Shell cargo run <CR>
+"nnoremap mb :Shell cargo build <CR>
 
 
 " Grep-ing
@@ -340,3 +348,4 @@ nnoremap <Leader>l :vertical resize +10<CR>
 nnoremap <Leader>j :vertical resize -10<CR>
 nnoremap <Leader>k :vertical resize +10<CR>
 
+nnoremap <Leader>r <C-^>
