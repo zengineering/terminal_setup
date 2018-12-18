@@ -77,6 +77,8 @@ tmuxcolors() {
 #
 # terminal color
 export TERM=xterm-256color
+#export TERM=screen-256color
+#export TERM=screen-256color-bce
 
 # zsh
 export ZSH_LOC=$(which zsh)
