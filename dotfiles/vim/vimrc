@@ -14,7 +14,7 @@ runtime! plugin/sensible.vim
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    AirlineRefresh
+    "AirelineRefresh
 augroup END
 
 " saved/loaded info
@@ -34,6 +34,7 @@ set viminfo=%,'10,f1,/20,:64,n~/.viminfo
 "=========================================
 
 "Terminal Coloring
+set t_Co=256
 if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes
     "     " render properly when inside 256-color tmux and GNU screen.
@@ -42,7 +43,7 @@ endif
 
 "Syntax coloring
 "----------
-syntax on
+syntax enable
 "colorscheme Tomorrow-Night
 colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
