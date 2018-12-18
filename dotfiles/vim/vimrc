@@ -272,6 +272,47 @@ let g:airline_theme='deus'
 "let g:airline_theme='solarized'
 "let g:airline_solarized_bg='dark'
 
+" FZF
+" --------------------------
+"  point to install
+set rtp+=/usr/local/opt/fzf
+" use ctags
+let g:fzf_tags_command = 'ctags --tag-relative -f .tags -R --extra=+f'
+" use current color scheme
+let g:fzf_colors =
+            \ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" search files, tags, ag
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>ft :Tags<CR>
+nnoremap <Leader>fa :Ag<CR>
+" search files, tags, ag for current word
+nnoremap <silent> <Leader>f :Files <C-R><C-W><CR>
+nnoremap <silent> <Leader>d :Tags <C-R><C-W><CR>
+nnoremap <silent> <Leader>a :Ag <C-R><C-W><CR>
+
+
+" Ack
+" --------------------------
+"  use ag
+if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+endif
+" don't jump to first result automatically
+"cnoreabbrev Ack Ack!
+"nnoremap <Leader>a :Ack!<Space>
+
 
 "=========================================
 "

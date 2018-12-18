@@ -181,8 +181,15 @@ if [ -d $HOME/Library/Python/2.7/bin ]; then
 fi
 
 
-#================================
+#===============================
 # ctags
 #
-alias tagit="ctags --tag-relative -f .tags -R &"
+alias tagit="ctags --tag-relative -f .tags -R --extra=+f &"
+
+
+#================================
+# FZF
+#
+export FZF_DEFAULT_COMMAND='fd --type f'
+#export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
