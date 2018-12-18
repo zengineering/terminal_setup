@@ -29,7 +29,7 @@ current_window_fg=colour254
 window_activity_fg=colour9
 window_activity_bg=$main_bg
 
-last_window_fg=colour5
+last_window_fg=colour31
 last_window_bg=$main_bg
 
 pane_border_fg=colour250
