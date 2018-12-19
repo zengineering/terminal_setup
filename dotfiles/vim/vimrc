@@ -51,8 +51,8 @@ endif
 "Syntax coloring
 "----------
 syntax enable
-"colorscheme Tomorrow-Night
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
 "colorscheme onedark
 "colorscheme brogrammer
@@ -242,9 +242,9 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 " open Ctrl-P tag search
 nnoremap <Leader>p :CtrlPTag<CR>
 " Open Ctrl-P tag; search for current word
-nmap <Leader>. :CtrlPTag<CR><C-\>w
+nmap <Leader>pc :CtrlPTag<CR><C-\>w
 " Open tag in new tab
-nnoremap <silent><Leader>t <C-w><C-]><C-w>T
+nnoremap <silent><Leader>. <C-w><C-]><C-w>T
 " Preview tag in new window
 nnoremap <silent><Leader>w <C-w>}
 " Toggle Tagbar
@@ -294,13 +294,13 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " search files, tags, ag
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>ft :Tags<CR>
-nnoremap <Leader>fa :Ag<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :Tags<CR>
+nnoremap <Leader>a :Ag<CR>
 " search files, tags, ag for current word
-nnoremap <silent> <Leader>f :Files <C-R><C-W><CR>
-nnoremap <silent> <Leader>d :Tags <C-R><C-W><CR>
-nnoremap <silent> <Leader>a :Ag <C-R><C-W><CR>
+"nnoremap <silent> <Leader>f :Files <C-R><C-W><CR>
+nnoremap <silent> <Leader>ct :Tags <C-R><C-W><CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 
 " Ack
