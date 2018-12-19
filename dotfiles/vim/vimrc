@@ -357,6 +357,12 @@ command! Jsonify % !python -m json.tool
 command! Jinjafy :normal I {% <Esc>A %} <Esc>
 "nnoremap jn :Jinjafy<CR>
 
+" edit this file
+nnoremap <Leader>v :tabe $HOME/.vimrc<CR>
+
+" refresh airline (mostly after autoreload of vimrc)
+nnoremap <Leader>1 :AirlineRefresh<CR>
+
 
 "=========================================
 "
