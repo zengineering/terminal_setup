@@ -14,7 +14,6 @@ runtime! plugin/sensible.vim
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    "AirelineRefresh
 augroup END
 
 " saved/loaded info
@@ -84,6 +83,9 @@ set statusline='%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]'
 highlight ColorColumn ctermbg=darkgray
 set colorcolumn=100
 
+"Splitting
+"----------
+set splitright
 
 "=========================================
 "
@@ -113,7 +115,7 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
 " escape insert mode
-inoremap ,, <Esc>
+inoremap ,<Space> <Esc>
 
 " change leader key
 let mapleader = ","
@@ -127,9 +129,20 @@ let mapleader = ","
 
 "Syntastic
 "------------
+" suggested starter settings; some handled by Airline
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_loc_list_height=5
 let g:syntastic_quiet_messages = { 'type': 'style' }
 let g:syntastic_python_checkers = ['prospector', 'flake8']
 let g:syntastic_mode_map = { 'mode': 'active' }
+"let g:syntastic_mode_map = { 'mode': 'passive' }
 "let g:syntastic_mode_map = { 
 "    \ 'mode': 'active',
 "    \ 'active_filetypes': [],
@@ -239,38 +252,31 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 " Ctags
 " --------------------------
 "
-" open Ctrl-P tag search
-nnoremap <Leader>p :CtrlPTag<CR>
-" Open Ctrl-P tag; search for current word
-nmap <Leader>pc :CtrlPTag<CR><C-\>w
+" Tell vim where to look for tags, i.e. .tags in pwd, or up until HOME
+set tags=./.tags,.tags;$HOME
+
+" Open tag in this tab
+nnoremap <silent><Leader>. <C-]>
 " Open tag in new tab
-nnoremap <silent><Leader>. <C-w><C-]><C-w>T
+nnoremap <silent><Leader>t <C-w><C-]><C-w>T
+" Open tag in vsplit window
+nnoremap <silent><Leader>s :vsplit <CR>:exec("tag ".expand("<cword>"))<CR>
 " Preview tag in new window
 nnoremap <silent><Leader>w <C-w>}
+" Open tag in new tab; list options for multiple matches
+nnoremap tj g<C-]>
+
 " Toggle Tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 " Open Tagbar on left
 let g:tagbar_left = 1
-" Tell vim where to look for tags, i.e. .tags in pwd, or up until HOME
-set tags=./.tags,.tags;$HOME
+
+" open Ctrl-P tag search
+nnoremap <Leader>p :CtrlPTag<CR>
+" Open Ctrl-P tag; search for current word
+nmap <Leader>pc :CtrlPTag<CR><C-\>w
 " CtrlP searches up until it find this
 let g:ctrlp_root_markers=".tags"
-
-" Airline
-" --------------------------
-set noshowmode
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='deus'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='understated'
-"let g:airline_theme='bubblegum'
-"let g:airline_theme='base16'
-"let g:airline_theme='simple'
-"let g:airline_theme='luna'
-"let g:airline_theme='solarized'
-"let g:airline_solarized_bg='dark'
 
 " FZF
 " --------------------------
@@ -294,13 +300,13 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " search files, tags, ag
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>t :Tags<CR>
-nnoremap <Leader>a :Ag<CR>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>ft :Tags<CR>
+nnoremap <Leader>fa :Ag<CR>
 " search files, tags, ag for current word
 "nnoremap <silent> <Leader>f :Files <C-R><C-W><CR>
-nnoremap <silent> <Leader>ct :Tags <C-R><C-W><CR>
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>fc :Tags <C-R><C-W><CR>
+nnoremap <silent> <Leader>ac :Ag <C-R><C-W><CR>
 
 
 " Ack
@@ -312,6 +318,31 @@ endif
 " don't jump to first result automatically
 "cnoreabbrev Ack Ack!
 "nnoremap <Leader>a :Ack!<Space>
+
+" Airline
+" --------------------------
+set noshowmode
+let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"let g:airline_theme='deus'
+let g:airline_theme='tomorrow'
+"let g:airline_theme='understated'
+"let g:airline_theme='bubblegum'
+"let g:airline_theme='base16'
+"let g:airline_theme='simple'
+"let g:airline_theme='luna'
+"let g:airline_theme='solarized'
+"let g:airline_solarized_bg='dark'
+
+" ALE
+"------------
+let g:airline#extensions#ale#enabled = 1
+
+
+" Commentary
+"------------
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 
 "=========================================
@@ -343,8 +374,8 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 command! Flake  % !python3 -m pyflakes
 command! Flake2 % !python2 -m pyflakes
 
-
 " pretty-print json
+" --------------------------
 command! Jsonify % !python -m json.tool
 
 " open pdf
@@ -357,6 +388,17 @@ command! Jsonify % !python -m json.tool
 command! Jinjafy :normal I {% <Esc>A %} <Esc>
 "nnoremap jn :Jinjafy<CR>
 
+"  Copy/Paste 
+" --------------------------
+" Copy contents of file onto system clipboard
+command CopyAllClip :%y+
+" Copy contents of file into register 'a'
+command CopyAll :normal gg"ayG
+" Paste content of register 'a', overwriting existing content
+command PasteAway :%d | :put! a
+
+"  Sundry mappings
+" --------------------------
 " edit this file
 nnoremap <Leader>v :tabe $HOME/.vimrc<CR>
 
@@ -390,9 +432,9 @@ nnoremap gR :grep -r '\b<cword>\b' *<CR>
 "       Resizing and Movement
 "
 "=========================================
-nnoremap <Leader>h :vertical resize -10<CR>
-nnoremap <Leader>l :vertical resize +10<CR>
-nnoremap <Leader>j :vertical resize -10<CR>
-nnoremap <Leader>k :vertical resize +10<CR>
+nnoremap <Leader>H :vertical resize -10<CR>
+nnoremap <Leader>L :vertical resize +10<CR>
+nnoremap <Leader>J :resize -10<CR>
+nnoremap <Leader>K :resize +10<CR>
 
 nnoremap <Leader>r <C-^>
