@@ -1,18 +1,9 @@
 #============================
 # aliases
 #
-# bash editing/refreshing/viewing alias sb='source ~/.bashrc'
+# bash editing/refreshing/viewing
 alias eb='vim ~/.bashrc'
-
-alias sbp='source ~/.bash_profile'
-alias ebp='vim ~/.bash_profile'
-
-alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
-
-alias sp='vim ~/.sh_profile'
-alias ep='vim ~/.sh_profile'
-
 alias ev='vim ~/.vimrc'
 
 # other stuff
@@ -38,6 +29,8 @@ darwin*)
     alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
     alias brewuu='brew update && brew upgrade && brew cleanup'
+    alias brewuue='brew update && brew upgrade && brew cleanup && exit'
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     ;; 
 linux*)
     if [ -f /etc/os-release ]; then
@@ -81,7 +74,7 @@ export TERM=screen-256color
 export TERM=screen-256color-bce
 
 # zsh
-export ZSH_LOC=$(which zsh)
+export ZSH_LOC=$(which zsh 2>/dev/null)
 
 # Go
 command -v go >/dev/null 2>&1 && {
