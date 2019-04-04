@@ -12,6 +12,7 @@ alias executable='chmod 755'
 alias cl='clear'
 alias cpr="cp -r"
 alias vimp='vim -p'
+alias agl='ag -l'
 
 # typos
 alias cim='vim'
@@ -64,6 +65,10 @@ tmuxcolors() {
     for i in {0..255}; do printf "\x1b[38;5;${i}mcolour%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
 }
 
+job() {
+    fg %$1
+}
+
 
 #================================
 # Exports
@@ -104,7 +109,6 @@ if [ -d $HOME/anaconda3 ]; then
     export PATH="$PATH:$HOME/anaconda3/bin"
 fi
 
-#================================
 
 #================================
 # machine-specific profiles
@@ -136,6 +140,7 @@ fi
 if [ -f $HOME/.cisco_mbp_profile ]; then
     source $HOME/.cisco_mbp_profile
 fi
+
 
 #================================
 # VirtualenvWrapper
@@ -185,4 +190,10 @@ alias tagit="ctags --tag-relative -f .tags -R --extra=+f &"
 #
 export FZF_DEFAULT_COMMAND='fd --type f'
 #export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
+
+#===============================
+# patch
+#
+alias patchit="patch -p0 <"
 
