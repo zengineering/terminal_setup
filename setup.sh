@@ -10,7 +10,7 @@ link_dotfiles() {
     done
 }
 
-if [ $(basename $PWD) != terminal_setup ]; then
+if [ $(basename $PWD) != terminal_setup && $(basename $PWD) != .terminal_setup]; then
     echo "Run from terminal_setup dir."
     exit 1
 fi
