@@ -92,7 +92,7 @@ setw -g status-fg $main_fg
 setw -g window-status-style "fg=$window_fg,bg=$window_bg"
 setw -g window-status-format " $window_fmt" 
 setw -g window-status-current-style "fg=$current_window_fg,bg=$current_window_bg"
-setw -g window-status-current-format "#[fg=$window_bg,bg=$current_window_bg]#{left_separator_main}#[fg=default,bg=default] $window_fmt #[fg=$current_window_bg,bg=$window_bg]#{left_separator_main}"
+setw -g window-status-current-format "#[fg=$window_bg,bg=$current_window_bg]#{left_separator_main}#[fg=$current_window_fg,bg=$current_window_bg] $window_fmt #[fg=$current_window_bg,bg=$window_bg]#{left_separator_main}"
 setw -g window-status-activity-style "fg=$window_activity_fg,bg=$window_activity_bg"
 setw -g window-status-last-style "fg=$last_window_fg,bg=$last_window_bg"
 setw -g pane-border-style "fg=$pane_border_fg,bg=$pane_border_bg"
