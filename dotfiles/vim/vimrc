@@ -240,7 +240,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " :h g:incsearch#auto_nohlsearch
 set hlsearch
-let g:incsearch#auto_nohlsearch = 1
+let g:incsearch#auto_nohlsearch = 0
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
@@ -380,6 +380,8 @@ function! s:ExecuteInShell(command)
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
+" typos
+command! E :edit!
 
 " lint python
 " --------------------------
@@ -422,6 +424,9 @@ nnoremap <silent><Leader>ms :mksession! $HOME/.vimsessions/default.vs<CR>
 
 " quit all without saving
 nnoremap QQ :qa!<CR>
+
+" insert a newline
+nnoremap <Leader>n i<CR><Esc>
 
 "=========================================
 "
