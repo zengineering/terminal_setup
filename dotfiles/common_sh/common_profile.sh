@@ -197,3 +197,8 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 #
 alias patchit="patch -p0 <"
 
+
+#===============================
+# lynx
+#
+alias lynx="lynx -vikeys"
