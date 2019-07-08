@@ -118,8 +118,8 @@ fi
 Time12h="\T"
 Time24h="\t"
 Time12a="\@"
-PathShort="\w"
-PathFull="\W"
+PathFull="\w"
+PathShort="\W"
 NewLine="\n"
 Jobs="\j"
 
@@ -147,7 +147,7 @@ if [[ -f ~/.git_prompt.sh && "$use_git_prompt" = yes ]]; then
     fi)'
 # no git prompt
 else 
-    export PS1="$BGreen$Time24h $IBlue$PathFull$Color_Off$NewLine$White[$Red$Jobs$White] $ICyan\$$Color_Off ";
+    export PS1="$BGreen$Time24h [$Yellow$Jobs$White] $IBlue$PathFull$Color_Off$NewLine$ICyan\$$Color_Off ";
 fi
 
 # less
