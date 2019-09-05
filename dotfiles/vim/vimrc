@@ -328,9 +328,16 @@ endif
 " --------------------------
 set noshowmode
 let g:airline_powerline_fonts = 1
+" maybe fix width issue?
+" set ambiwidth=double
+"let g:airline_powerline_fonts = 0
+"let g:airline_symbols_ascii = 1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 "let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"themes
 let g:airline_theme='tomorrow'
 "let g:airline_theme='deus'
 "let g:airline_theme='understated'
