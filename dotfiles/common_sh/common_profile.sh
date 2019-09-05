@@ -13,6 +13,7 @@ alias cl='clear'
 alias cpr="cp -r"
 alias vimp='vim -p'
 alias agl='ag -l'
+alias ltr='ls -ltr'
 
 # typos
 alias cim='vim'
