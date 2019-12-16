@@ -59,7 +59,7 @@ time_fg=colour38
 time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} [%H:%M] %a %m.%d.%Y"
 
 # cpu utilization
-cpu_bg=colour236
+cpu_bg=colour242
 cpu="#[fg=$cpu_bg]#{right_separator_main}#[bg=$cpu_bg]#{cpu_fg_color} CPU: #{cpu_icon}#{cpu_percentage}"
 
 # hostname

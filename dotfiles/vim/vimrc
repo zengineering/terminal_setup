@@ -328,9 +328,16 @@ endif
 " --------------------------
 set noshowmode
 let g:airline_powerline_fonts = 1
+" maybe fix width issue?
+" set ambiwidth=double
+"let g:airline_powerline_fonts = 0
+"let g:airline_symbols_ascii = 1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 "let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"themes
 let g:airline_theme='tomorrow'
 "let g:airline_theme='deus'
 "let g:airline_theme='understated'
@@ -410,6 +417,30 @@ command CopyAllClip :%y+
 command CopyAll :normal gg"ayG
 " Paste content of register 'a', overwriting existing content
 command PasteAway :%d | :put! a
+
+" Don't auto-indent when pasting
+function! WrapForTmux(s)
+    if !exists('$TMUX')
+        return a:s
+    endif
+
+    let tmux_start = "\<Esc>Ptmux;"
+    let tmux_end = "\<Esc>\\"
+
+    return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
 
 "  Sundry mappings
 " --------------------------

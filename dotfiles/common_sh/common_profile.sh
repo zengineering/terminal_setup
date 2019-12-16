@@ -13,6 +13,7 @@ alias cl='clear'
 alias cpr="cp -r"
 alias vimp='vim -p'
 alias agl='ag -l'
+alias ltr='ls -ltr'
 
 # typos
 alias cim='vim'
@@ -202,3 +203,18 @@ alias patchit="patch -p0 <"
 # lynx
 #
 alias lynx="lynx -vikeys"
+
+
+#===============================
+# Java
+#
+
+#export JAVA_HOME=$(/usr/libexec/java_home)
+
+# To use Homebrew's directories rather than ~/.jenv add to your profile:
+export JENV_ROOT=/usr/local/opt/jenv
+
+# To enable shims and autocompletion add to your profile:
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+
