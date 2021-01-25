@@ -1,9 +1,6 @@
 [submodule "vim"]
 	path = vim
 	url = https://github.com/vim/vim.git
-[submodule "tmux"]
-	path = tmux
-	url = https://github.com/tmux/tmux
 [submodule "libevent"]
 	path = libevent
 	url = https://github.com/libevent/libevent.git
@@ -79,9 +76,6 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "zsh"]
-	path = zsh
-	url = https://github.com/zsh-users/zsh.git
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
