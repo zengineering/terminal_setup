@@ -31,9 +31,6 @@
 [submodule "tmux-plugins/tmux-cpu"]
 	path = tmux-plugins/plugins/tmux-cpu
 	url = https://github.com/tmux-plugins/tmux-cpu.git
-[submodule "tmux-plugins/tmux-onedark-theme"]
-	path = tmux-plugins/plugins/tmux-onedark-theme
-	url = https://github.com/odedlaz/tmux-onedark-theme.git
 [submodule "bundle/neocomplete.vim"]
 	path = bundle/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim.git
