@@ -23,6 +23,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # to load these completions, you may need to run this:
 # chmod go-w '/usr/local/share'
 
+PROMPT='%{$fg[green]%}%T '$PROMPT
+
 clear
 
 ## >>> conda initialize >>>
