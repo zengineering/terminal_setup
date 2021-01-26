@@ -1,0 +1,104 @@
+#=============================================
+#       Separator symbols
+
+# normal status left/right sections separators
+#left_separator_main=''
+#left_separator_sub='|'
+#right_separator_main=''
+#right_separator_sub='|'
+
+# powerline status left/right sections separators
+left_separator_main=''  # /!\ you don't need to install Powerline
+left_separator_sub=''   #   you only need fonts patched with
+right_separator_main='' #   Powerline symbols or the standalone
+right_separator_sub=''  #   PowerlineSymbols.otf font
+
+# general fg/bg
+main_bg=colour0
+main_fg=colour255
+
+# windows
+window_bg=$main_bg
+window_fg=colour6
+window_fmt="(#I) #W "
+
+current_window_bg=colour23
+current_window_fg=colour254
+
+window_activity_fg=colour9
+window_activity_bg=$main_bg
+
+last_window_fg=colour31
+last_window_bg=$main_bg
+
+pane_border_fg=colour250
+pane_border_bg=default
+active_pane_border_fg=colour123
+active_pane_border_bg=default
+
+#---------------------------------------------
+
+#=============================================
+#       Status line widgets
+
+# prefix indicator
+#prefix_char='❖'
+prefix_char='💡' 
+prefix_bg=$main_bg
+prefix_fg=colour202
+prefix="#[bg=prefix_bg,fg=prefix_fg,bold]#{?client_prefix,$prefix_char, }"
+
+# TODO: root
+#root_symbol='🎩''
+#♕♔
+
+# time and date 
+time_bg=$main_bg
+time_fg=colour38
+time="#[bg=$time_bg,fg=$time_fg]#{right_separator_sub} [%H:%M] %a %m.%d.%Y"
+
+# cpu utilization
+#cpu_bg=colour242
+#cpu="#[fg=$cpu_bg]#{right_separator_main}#[bg=$cpu_bg]#{cpu_fg_color} CPU: #{cpu_icon}#{cpu_percentage}"
+
+# hostname
+host_bg=colour17
+host_fg=colour250
+#date="#[fg=$date_bg]#{right_separator_main}#[bg=$date_bg,fg=$date_fg] [%a] %h.%d.%Y"
+host="#[fg=$host_bg]#{right_separator_main}#[bg=$host_bg,fg=$host_fg] #H"
+
+# session
+session_fg=$main_bg
+#session_bg=colour202
+session_bg=colour28
+session_char='❖'
+session="#[fg=$session_fg,bg=$session_bg]$session_char #S #[fg=$session_bg,bg=$main_bg]#{left_separator_main}"
+#🌿🍀🌙🌎🔘
+#---------------------------------------------
+
+#=============================================
+#       Configure Tmux
+
+# max length of status bars
+set -g status-left-length 1000
+set -g status-right-length 1000
+
+# status bar
+setw -g status-bg $main_bg
+setw -g status-fg $main_fg
+
+# windows
+setw -g window-status-style "fg=$window_fg,bg=$window_bg"
+setw -g window-status-format " $window_fmt" 
+setw -g window-status-current-style "fg=$current_window_fg,bg=$current_window_bg"
+setw -g window-status-current-format "#[fg=$window_bg,bg=$current_window_bg]#{left_separator_main}#[fg=$current_window_fg,bg=$current_window_bg] $window_fmt #[fg=$current_window_bg,bg=$window_bg]#{left_separator_main}"
+setw -g window-status-activity-style "fg=$window_activity_fg,bg=$window_activity_bg"
+setw -g window-status-last-style "fg=$last_window_fg,bg=$last_window_bg"
+setw -g pane-border-style "fg=$pane_border_fg,bg=$pane_border_bg"
+setw -g pane-active-border-style "fg=$active_pane_border_fg,bg=$active_pane_border_bg"
+
+# status bars
+set -g status-left "$prefix $session "
+set -g status-right "$time "
+#---------------------------------------------
+
