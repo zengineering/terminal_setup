@@ -24,7 +24,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # chmod go-w '/usr/local/share'
 
 PROMPT='%{$fg[green]%}%T '$PROMPT
-
 clear
 
 ## >>> conda initialize >>>
