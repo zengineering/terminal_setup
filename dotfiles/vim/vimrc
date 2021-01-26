@@ -350,8 +350,8 @@ let g:airline_theme='tomorrow'
 
 " ALE
 "------------
-let g:airline#extensions#ale#enabled = 1
-let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 0
+let g:ale_completion_enabled = 0
 let g:ale_linters = {'python': ['prospector'], 'cpp': ['clang']}
 let g:ale_cpp_clang_options = '-std=c++17'
 let g:ale_cpp_gcc_options = '-std=c++17'
