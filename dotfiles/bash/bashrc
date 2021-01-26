@@ -118,13 +118,15 @@ fi
 Time12h="\T"
 Time24h="\t"
 Time12a="\@"
-PathShort="\w"
-PathFull="\W"
+PathFull="\w"
+PathShort="\W"
 NewLine="\n"
 Jobs="\j"
 
+use_git_prompt=no
 # Source git prompt:
-if [ -f ~/.git_prompt.sh ]; then
+if [[ -f ~/.git_prompt.sh && "$use_git_prompt" = yes ]]; then
+    echo "Using git"
     source ~/.git_prompt.sh
     
     # Prompt:
@@ -145,7 +147,7 @@ if [ -f ~/.git_prompt.sh ]; then
     fi)'
 # no git prompt
 else 
-    echo " '$IBlue$PathShort$Color_Off'\n'$ICyan'\$'$Color_Off' "; 
+    export PS1="$BGreen$Time24h [$Yellow$Jobs$White] $IBlue$PathFull$Color_Off$NewLine$ICyan\$$Color_Off ";
 fi
 
 # less
