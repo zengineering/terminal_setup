@@ -179,6 +179,8 @@ if [ -d $HOME/Library/Python/2.7/bin ]; then
     export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 fi
 
+export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
 
 #===============================
 # ctags
