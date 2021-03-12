@@ -171,13 +171,13 @@ fi
 #================================
 # Homebrew Python
 #
-if [ -d $HOME/Library/Python/3.7/bin ]; then
-    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
-fi
-
-if [ -d $HOME/Library/Python/2.7/bin ]; then
-    export PATH="$HOME/Library/Python/2.7/bin:$PATH"
-fi
+#if [ -d $HOME/Library/Python/3.7/bin ]; then
+#    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+#fi
+#
+#if [ -d $HOME/Library/Python/2.7/bin ]; then
+#    export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+#fi
 
 export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
@@ -219,4 +219,25 @@ export JENV_ROOT=/usr/local/opt/jenv
 # To enable shims and autocompletion add to your profile:
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
+
+#===============================
+# Anaconda
+#
+
+conda_init() {
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/zfrankli/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/zfrankli/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/zfrankli/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/zfrankli/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
 
