@@ -52,7 +52,11 @@ endif
 "Syntax coloring
 "----------
 syntax enable
-colorscheme Tomorrow-Night
+colorscheme solarized8_light
+" colorscheme tangoX
+" colorscheme Tomorrow
+"
+" colorscheme Tomorrow-Night
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme desert
 "colorscheme onedark
@@ -83,10 +87,10 @@ set pastetoggle=<F2>
 "set laststatus=2
 set statusline='%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]'
 
-"Highlight @ column=100
+"Highlight @ column=X
 "----------
 highlight ColorColumn ctermbg=darkgray
-set colorcolumn=100
+set colorcolumn=128
 
 "Splitting
 "----------
@@ -276,7 +280,7 @@ let g:airline_theme='tomorrow'
 " ALE
 "------------
 let g:ale_enabled = 0
-let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#enabled = 0
 let g:ale_completion_enabled = 1
 let g:ale_linters = {'python': ['prospector'], 'cpp': ['clang']}
 let g:ale_cpp_clang_options = '-std=c++17'
