@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+current_branch=$(git symbolic-ref --short -q HEAD)
+git push --set-upstream origin $current_branch

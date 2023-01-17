@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# restore (uncommitted) deleted files
+git diff --diff-filter=M
