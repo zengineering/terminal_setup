@@ -1,0 +1,5 @@
+vim-javascript // syntax highlighting
+vim-cpp-enhanced-highlight // syntax highlighting
+neocomplete.vim // autocomplete; EOL
+ale // linter
+ctrlp // search
