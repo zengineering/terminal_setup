@@ -24,6 +24,7 @@ alias vagrantgo='vagrant up && vagrant ssh'
 
 # git
 alias uncommit='git reset --mixed HEAD~'
+alias gitsplitdiff="git diff | git-split-diffs --color | less -RFX"
 
 # show/hide hidden files in OSX
 case $OSTYPE in 
@@ -75,6 +76,7 @@ job() {
 # Exports
 #
 # terminal color
+LSCOLORS=exfxcxdxbxGxDxabagacad
 #export TERM=xterm-256color
 export TERM=screen-256color
 export TERM=screen-256color-bce
@@ -240,4 +242,9 @@ conda_init() {
     unset __conda_setup
     # <<< conda initialize <<<
 }
+
+#===============================
+# Docker
+# 
+alias docker_ps='docker ps --format "table {{.ID}}\t{{.Names}}"'
 
