@@ -28,12 +28,6 @@
 [submodule "bundle/DidYouMean"]
 	path = bundle/DidYouMean
 	url = https://github.com/EinfachToll/DidYouMean.git
-[submodule "prezto"]
-	path = prezto
-	url = https://github.com/sorin-ionescu/prezto
-[submodule "fonts"]
-	path = fonts
-	url = https://github.com/powerline/fonts.git
 [submodule "bundle/incsearch.vim"]
 	path = bundle/incsearch.vim
 	url = https://github.com/haya14busa/incsearch.vim.git
