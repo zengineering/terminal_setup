@@ -1,4 +1,4 @@
-## [fish](https://fishshell.com) stuff
+## [fish](https://fishshell.com) config and customization
 
 - copy `config.fish` to `~/.config/fish/`
 - copy `fishin` to `~/.fishin`
